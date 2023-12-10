@@ -1,0 +1,4 @@
+{
+  "editor.tabSize": 2,
+  "purescript.pursExe": "/nix/store/0xvf4mk912ycgg6h388ddm7l11q2p80y-purs-0.15.13/bin/purs"
+}

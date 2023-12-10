@@ -1,0 +1,17 @@
+package:
+  name: viper
+  dependencies:
+    - argonaut-core
+    - codec-argonaut
+    - console
+    - effect
+    - prelude
+    - node-fs
+  test:
+    dependencies: []
+    main: Test.Main
+
+workspace:
+  extra_packages: {}
+  package_set:
+    registry: 46.2.0

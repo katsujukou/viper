@@ -1,0 +1,9 @@
+package:
+  name: 'cli'
+  dependencies:
+    - argparse-basic
+    - console
+    - node-path
+    - node-process
+    - prelude
+    - viper
