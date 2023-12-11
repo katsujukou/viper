@@ -1,0 +1,11 @@
+package:
+  name: viper-example
+  dependencies:
+    - prelude
+    - effect
+    - console
+
+workspace:
+  extra_packages: {}
+  package_set:
+    registry: 46.2.0
