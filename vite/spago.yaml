@@ -1,0 +1,7 @@
+package:
+  name: 'vite'
+  dependencies:
+    - http-methods
+    - js-promise-aff
+    - node-http
+    - record
