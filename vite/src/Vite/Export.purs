@@ -47,6 +47,10 @@ foreign import jsNull :: JsValue
 
 foreign import jsUndefined :: JsValue
 
+foreign import isNull :: JsValue ->Boolean
+
+foreign import isEmptyRecord :: forall r. { | r } -> Boolean
+
 instance Export a => Export (Maybe a) where
   export = maybe jsNull export 
 
@@ -58,7 +62,10 @@ instance
   , ExportRecordProp rl r ro
   ) => Export (Record r)
   where
-    export = exportRecordProp (Proxy@rl) >>> unsafeCoerce
+    export = exportRecordProp (Proxy@rl) >>> case _ of
+      v
+        | isEmptyRecord v -> jsNull
+        | otherwise -> unsafeCoerce v
 
 class ExportRecordProp (rl :: RowList Type) ri ro  | rl ri -> ro where
   exportRecordProp :: Proxy rl -> Record ri -> Record ro
@@ -81,7 +88,9 @@ else instance
   where
     exportRecordProp _ ri = 
       let label = Proxy@label
-          v = Record.get label ri
+          v = export $ Record.get label ri
           irest = Record.delete label ri
           orest = exportRecordProp (Proxy@tail) irest
-      in RU.unsafeSet (reflectSymbol label) (export v) orest
+      in
+      if isNull v then unsafeCoerce orest
+      else RU.unsafeSet (reflectSymbol label) (export v) orest
