@@ -65,8 +65,8 @@ instance
 else instance Optional a a (Maybe a) where
   optional = Just
 
-else instance Optional a b (Maybe b) where
-  optional _ = Nothing
+-- else instance Optional a b (Maybe b) where
+--   optional _ = Nothing
 
 class OptionalFields (r :: Row Type) ri ro | r -> ro where
   optionalFields :: Proxy r -> Record ri -> Record ro
