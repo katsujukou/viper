@@ -5,8 +5,11 @@ package:
     - codec-argonaut
     - console
     - effect
-    - prelude
+    - js-promise-aff
+    - node-execa
     - node-fs
+    - prelude
+    - vite
   test:
     dependencies: []
     main: Test.Main
